@@ -1,6 +1,6 @@
 - name: Demo on filters
   hosts: all
-  var:
+  vars:
    URL: https://github.com/zs-amrutha/frontend/archive/main.zip
   
   tasks:
