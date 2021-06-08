@@ -1,0 +1,11 @@
+- name: Demo on loop
+  hosts: all
+  tasks:
+    - name: Print day of week
+      debug:
+        msg: "week = {{ day }}"
+      loop:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
