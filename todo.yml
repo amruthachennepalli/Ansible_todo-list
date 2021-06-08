@@ -8,3 +8,9 @@
         name: nginx
         update_cache: yes
         state: present
+
+    - name: apt update
+      apt:
+        name: npm
+        update_cache: yes
+        state: present
