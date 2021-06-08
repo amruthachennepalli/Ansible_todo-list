@@ -1,8 +1,9 @@
--name: Demo on filters
- hosts: all
- vars:
+- name: Demo on loop
+  hosts: all
+  var:
    URL: https://github.com/zs-amrutha/frontend/archive/main.zip
- tasks:
-  -name: Print filename of url
-   debug:
-    msg: "{{ URL | urlsplit.path }}"
+  
+  tasks:
+    - name: Print filename of url
+      debug:
+        msg: "{{ URL | urlsplit.path }}"
