@@ -1,9 +1,9 @@
 - name: Demo on loop
   hosts: all
   tasks:
-    - name: Print fruitnames
+    - name: Print daynames
       debug:
-        msg: "Fruit = {{ item }}"
+        msg: "Day = {{ days }}"
       loop:
         - Monday
         - Tuesday
