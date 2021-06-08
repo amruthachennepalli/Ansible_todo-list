@@ -3,13 +3,18 @@
   become: yes
   ## This become can also be used at task level
   tasks:
-    - name: apt update
+    - name: NGINX Installation 
       apt:
         name: nginx
         update_cache: yes
         state: present
 
-    - name: apt update
+    - name: Start Nginx
+      systemd:
+       name: nginx
+       enabled: yes
+
+    - name: npm Installation 
       apt:
         name: npm
         update_cache: yes
