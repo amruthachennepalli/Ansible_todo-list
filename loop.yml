@@ -1,11 +1,11 @@
 - name: Demo on loop
   hosts: all
   tasks:
-    - name: Print daynames
+    - name: Print fruitnames
       debug:
-        msg: "Day = {{ days }}"
+        msg: "Fruit = {{ item }}"
       loop:
-        - Monday
-        - Tuesday
-        - Wednesday
-        - Thursday
+        - Mango
+        - Papaya
+        - Graps
+        - Apple
