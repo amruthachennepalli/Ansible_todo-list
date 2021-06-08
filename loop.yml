@@ -1,7 +1,7 @@
 - name: Demo on loop
   hosts: all
   tasks:
-    - name: Print weekday
+    - name: Print weeknames
       debug:
         msg: "week = {{ day }}"
       loop:
