@@ -1,4 +1,4 @@
-- name: Demo on loop
+- name: Demo on filters
   hosts: all
   var:
    URL: https://github.com/zs-amrutha/frontend/archive/main.zip
