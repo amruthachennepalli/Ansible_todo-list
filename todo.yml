@@ -19,3 +19,8 @@
         name: npm
         update_cache: yes
         state: present
+    
+    - name: Delete default file
+      file:
+        path: /var/www/html
+        state: absent   
