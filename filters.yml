@@ -2,7 +2,11 @@
   hosts: all
   vars:
    URL: https://github.com/zs-amrutha/frontend/archive/main.zip
-  
+   
+   tag_data:
+      Environment: dev
+      Application: payment
+
   tasks:
     - name: Print filename of url
       debug:
@@ -10,4 +14,9 @@
 
     - name: Print last colum
       debug:
-        msg: "{{ URL.split('/') }}"        
+        msg: "{{ URL.split('/') }}"
+
+    - name: Print tag data
+      debug:
+        msg: "{{ tag_data | dict2items }}" 
+        

@@ -10,5 +10,7 @@
         - Graps
         - Apple
 
+        
+
 # Copied from session
 # docker run --rm -e "HOST=http://172.31.82.16/" -e "NUM_CLIENTS=5" -e "RUN_TIME=10m" -e "ERROR=0" -e "SILENT=0" robotshop/rs-load
