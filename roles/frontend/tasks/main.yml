@@ -19,6 +19,10 @@
     #   user:
     #     name: todoapp
     #     shell: /bin/bash
+    - name: Create dir
+      file:
+       path: /var/www/html/todoapp 
+       state: directory      
     
     - name: Download frontend Component
       get_url:
@@ -30,20 +34,17 @@
     - name: Unzip frontend Component
       unarchive:
         src: /tmp/frontend.zip
-        dest: /var/www/html
+        dest: /var/www/html/todoapp
         remote_src: yes
 
-    - name: Create dir
-      file:
-       path: /var/www/html/todoapp 
-       state: directory  
+
 
     - name: Use NPM to start the target
       command: npm start
       args:
         chdir: /var/www/html/todoapp/frontend
-      # async: 42
-      # poll: 0
+      async: 42
+      poll: 0
       become: yes
       become_user: root
 
