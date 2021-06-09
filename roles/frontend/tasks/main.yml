@@ -32,3 +32,14 @@
         src: /tmp/frontend.zip
         dest: /var/www/html
         remote_src: yes
+
+    - name: Create dir
+      file:
+      path: /var/www/html/todoapp 
+      state: directory      
+
+    - name: Use NPM to start the target
+      command: npm start
+      path: /var/www/html/todoapp/frontend
+      become: yes
+      become_user: root
