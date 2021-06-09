@@ -20,11 +20,10 @@
         update_cache: yes
         state: present   
         
-    - name: Add user todoapp
-      user:
-        name: todoapp
-        shell: /bin/bash
-
+    # - name: Add user todoapp
+    #   user:
+    #     name: todoapp
+    #     shell: /bin/bash
     
     - name: Download frontend Component
       get_url:
@@ -33,7 +32,7 @@
         username: admin
         password: admin123
 
-    - name: Unarchive a file that is already on the remote machine
+    - name: Unzip frontend Component
       unarchive:
         src: /tmp/frontend.zip
         dest: /var/www/html
