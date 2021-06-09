@@ -1,0 +1,14 @@
+- name: Demo on Conditions
+  hosts: all
+   
+  tasks:
+   - name: Print centOS  
+      debug:
+       msg: Hello centOS
+      when: OS == "centOS"
+
+   - name: Print Ubuntu  
+      debug:
+       msg: Hello Ubuntu
+      when: OS == "Ubuntu"         
+   
