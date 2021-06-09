@@ -40,7 +40,7 @@
     - name: Replace before the expression till the begin of the file (requires Ansible >= 2.4)
       replace:
         path: /etc/nginx/sites-available/default
-        before: root /var/www/html;
+        # before: root /var/www/html;
         regexp: root /var/www/html;
         replace: root /var/www/html/todoapp/frontend/dist;        
 
