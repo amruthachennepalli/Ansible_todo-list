@@ -10,10 +10,7 @@
         update_cache: yes
         state: present   
         
-    # - name: Add user todoapp
-    #   user:
-    #     name: todoapp
-    #     shell: /bin/bash
+
     - name: Create dir
       file:
        path: /var/www/html/todoapp 
@@ -35,7 +32,6 @@
     - name: Replace before the expression till the begin of the file (requires Ansible >= 2.4)
       replace:
         path: /etc/nginx/sites-enabled/default
-        # before: root /var/www/html;
         regexp: root /var/www/html;
         replace: root /var/www/html/todoapp/dist; 
 
@@ -58,3 +54,8 @@
     #   path: /var/www/html/todoapp/frontend
     #   become: yes
     #   become_user: root
+
+    # - name: Add user todoapp
+    #   user:
+    #     name: todoapp
+    #     shell: /bin/bash
