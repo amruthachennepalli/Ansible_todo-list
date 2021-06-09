@@ -10,7 +10,24 @@
         - Graps
         - Apple
 
-        
+    - name: Create servers
+      debug:
+        msg: "{{ item.name }}"
+      loop:
+        - name: server1
+          disks: 3gb
+          ram: 15Gb
+          network:
+            nic01: 100Gb
+            nic02: 10Gb
+        - name: server2 
+          disks: 3gb
+          ram: 15Gb
+          network:
+            nic01: 100Gb
+            nic02: 10Gb            
+      loop_control:
+        label: "{{ item.name }}"        
 
 # Copied from session
 # docker run --rm -e "HOST=http://172.31.82.16/" -e "NUM_CLIENTS=5" -e "RUN_TIME=10m" -e "ERROR=0" -e "SILENT=0" robotshop/rs-load
