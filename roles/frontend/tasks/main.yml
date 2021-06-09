@@ -1,0 +1,34 @@
+    - name: NGINX Installation 
+      apt:
+        name: nginx
+        update_cache: yes
+        state: present
+
+    - name: Start Nginx
+      systemd:
+       name: nginx
+       enabled: yes
+
+    - name: npm Installation 
+      apt:
+        name: npm
+        update_cache: yes
+        state: present   
+        
+    # - name: Add user todoapp
+    #   user:
+    #     name: todoapp
+    #     shell: /bin/bash
+    
+    - name: Download frontend Component
+      get_url:
+        url: http://100.26.172.235:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+        dest: /tmp/frontend.zip
+        username: admin
+        password: admin123
+
+    - name: Unzip frontend Component
+      unarchive:
+        src: /tmp/frontend.zip
+        dest: /var/www/html
+        remote_src: yes
