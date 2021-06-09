@@ -28,7 +28,7 @@
     
     - name: Download frontend Component
       get_url:
-        url: http://54.237.118.58:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+        url: http://100.26.172.235:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
         dest: /tmp/frontend.zip
         username: admin
         password: admin123
