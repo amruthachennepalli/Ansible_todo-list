@@ -36,10 +36,19 @@
     - name: Create dir
       file:
        path: /var/www/html/todoapp 
-       state: directory      
+       state: directory  
 
     - name: Use NPM to start the target
       command: npm start
-      path: /var/www/html/todoapp/frontend
+      args:
+        chdir: "{{ /var/www/html/todoapp/frontend }}"
+      async: 42
+      poll: 0
       become: yes
       become_user: root
+
+    # - name: Use NPM to start the target
+    #   command: npm start
+    #   path: /var/www/html/todoapp/frontend
+    #   become: yes
+    #   become_user: root
