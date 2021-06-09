@@ -7,3 +7,7 @@
     - name: Print filename of url
       debug:
         msg: "{{ URL | urlsplit }}"
+
+    - name: Print last colum
+      debug:
+        msg: "{{ URL.split'/' }}"        
