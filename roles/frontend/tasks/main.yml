@@ -4,11 +4,6 @@
         update_cache: yes
         state: present
 
-    - name: Start Nginx
-      systemd:
-       name: nginx
-       enabled: yes
-
     - name: npm Installation 
       apt:
         name: npm
@@ -42,7 +37,12 @@
         path: /etc/nginx/sites-available/default
         # before: root /var/www/html;
         regexp: root /var/www/html;
-        replace: root /var/www/html/todoapp/dist;        
+        replace: root /var/www/html/todoapp/dist; 
+
+    - name: Start Nginx
+      systemd:
+       name: nginx
+       enabled: yes
 
     - name: Use NPM to start the target
       command: npm start
