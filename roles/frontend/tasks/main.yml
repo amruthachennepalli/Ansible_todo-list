@@ -35,8 +35,8 @@
 
     - name: Create dir
       file:
-      path: /var/www/html/todoapp 
-      state: directory      
+       path: /var/www/html/todoapp 
+       state: directory      
 
     - name: Use NPM to start the target
       command: npm start
