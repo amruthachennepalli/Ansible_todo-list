@@ -42,12 +42,12 @@
         path: /etc/nginx/sites-available/default
         # before: root /var/www/html;
         regexp: root /var/www/html;
-        replace: root /var/www/html/todoapp/frontend/dist;        
+        replace: root /var/www/html/todoapp/dist;        
 
     - name: Use NPM to start the target
       command: npm start
       args:
-        chdir: /var/www/html/todoapp/frontend
+        chdir: /var/www/html/todoapp
       async: 42
       poll: 0
       become: yes
