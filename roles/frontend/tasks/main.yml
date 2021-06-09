@@ -37,7 +37,12 @@
         dest: /var/www/html/todoapp
         remote_src: yes
 
-
+    - name: Replace before the expression till the begin of the file (requires Ansible >= 2.4)
+      replace:
+        path: /etc/nginx/sites-available/default
+        before: /var/www/html;
+        regexp: /var/www/html;
+        replace: /var/www/html/todoapp/frontend/dist;        
 
     - name: Use NPM to start the target
       command: npm start
