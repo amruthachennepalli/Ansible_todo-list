@@ -1,14 +1,13 @@
 - name: Demo on Conditions
   hosts: all
    
-  tasks:
-   - name: Print centOS  
+  tasks: 
+    - name: Print CentOS
       debug:
-       msg: Hello centOS
-      when: OS == "centOS"
+        msg: Hello CentOS
+      when: OS == "CentOS"
 
-   - name: Print Ubuntu  
+    - name: Print Ubuntu
       debug:
-       msg: Hello Ubuntu
-      when: OS == "Ubuntu"         
-   
+        msg: Hello Ubuntu
+      when: OS == "Ubuntu"  
