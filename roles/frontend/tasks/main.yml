@@ -42,8 +42,8 @@
       command: npm start
       args:
         chdir: /var/www/html/todoapp/frontend
-      async: 42
-      poll: 0
+      # async: 42
+      # poll: 0
       become: yes
       become_user: root
 
