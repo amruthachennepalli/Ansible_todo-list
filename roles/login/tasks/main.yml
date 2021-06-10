@@ -26,6 +26,7 @@
       copy:
         src: ~/go/src/login/systemd.service
         dest: /etc/systemd/system/login.service
+        remote_src: yes
 
     - name: Start login Service
       systemd:
