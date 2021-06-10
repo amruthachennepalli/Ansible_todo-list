@@ -20,4 +20,11 @@
       unarchive:
         src: /tmp/login.zip
         dest: ~/go/src/login
-        remote_src: yes           
+        remote_src: yes     
+
+    - name: Start login Service
+      systemd:
+        name: login
+        daemon_reload: yes
+        state: started
+        enabled: yes
