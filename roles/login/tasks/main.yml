@@ -28,6 +28,20 @@
         dest: /etc/systemd/system/login.service
         remote_src: yes
 
+    - name: Replace env
+      replace:
+        path: /etc/systemd/system/login.service
+        regexp: LOGIN_ENDPOINT
+        replace: 8080 
+
+    # - name: Replace env
+    #   replace:
+    #     path: /etc/systemd/system/login.service
+    #     regexp: USERS_ENDPOINT
+    #     replace: 8080         
+
+        
+
     - name: Start login Service
       systemd:
         name: login
