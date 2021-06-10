@@ -20,7 +20,12 @@
       unarchive:
         src: /tmp/login.zip
         dest: ~/go/src/login
-        remote_src: yes     
+        remote_src: yes   
+
+    - name: Copy login Service file
+      copy:
+        src: login.service
+        dest: /etc/systemd/system/login.service
 
     - name: Start login Service
       systemd:
