@@ -3,3 +3,8 @@
         name: golang
         update_cache: yes
         state: present
+
+    - name: Create dir
+      file:
+       path: ~/go/src 
+       state: directory 
