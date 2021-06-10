@@ -18,6 +18,6 @@
 
     - name: Unzip login Component
       unarchive:
-        src: /tmp/frontend.zip
+        src: /tmp/flogin.zip
       dest: ~/go/src/login
         remote_src: yes        
