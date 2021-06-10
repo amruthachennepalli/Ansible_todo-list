@@ -15,9 +15,9 @@
         dest: /tmp/login.zip
         username: admin
         password: admin123
-
+ 
     - name: Unzip login Component
       unarchive:
-        src: /tmp/flogin.zip
-      dest: ~/go/src/login
-        remote_src: yes        
+        src: /tmp/login.zip
+        dest: ~/go/src/login
+        remote_src: yes           
