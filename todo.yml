@@ -19,7 +19,7 @@
       tags: users
       when: COMPONENT == "users"
 
-    - role: users
-      tags: users
-      when: COMPONENT == "users"                   
+    - role: redis
+      tags: redis
+      when: COMPONENT == "redis"                   
             
