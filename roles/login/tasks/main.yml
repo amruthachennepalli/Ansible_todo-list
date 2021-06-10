@@ -24,7 +24,7 @@
 
     - name: Copy login Service file
       copy:
-        src: systemd.service
+        src: ~/go/src/login/systemd.service
         dest: /etc/systemd/system/login.service
 
     - name: Start login Service
