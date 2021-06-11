@@ -36,5 +36,5 @@
       systemd:
         name: todo
         daemon_reload: yes
-        state: todo
+        state: started
         enabled: yes
