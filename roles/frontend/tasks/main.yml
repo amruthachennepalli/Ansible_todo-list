@@ -39,6 +39,11 @@
         regexp: root /var/www/html;
         replace: root /var/www/html/todoapp/frontend/dist;   
 
+    - name: Copy inde.js file
+      template:
+        src: index.js
+        dest: /var/www/html/todoapp/frontend/config/index.js        
+
     - name: Restart Nginx
       systemd:
         state: restarted
