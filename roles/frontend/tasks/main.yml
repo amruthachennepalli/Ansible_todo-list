@@ -13,8 +13,7 @@
       apt:
         name: npm
         update_cache: yes
-        state: present   
-        
+        state: present         
 
     - name: Create dir
       file:
@@ -38,19 +37,7 @@
       replace:
         path: /etc/nginx/sites-enabled/default
         regexp: root /var/www/html;
-        replace: root /var/www/html/todoapp/frontend/dist; 
-
-    - name: Replace env
-      replace:
-        path: /var/www/html/todoapp/frontend/config/index.js
-        regexp: 127.0.0.1
-        replace: login.zsdevops.online 
-
-    - name: Replace env
-      replace:
-        path: /var/www/html/todoapp/frontend/config/index.js
-        regexp: 127.0.0.1
-        replace:todo.zsdevops.online    
+        replace: root /var/www/html/todoapp/frontend/dist;   
 
     - name: Restart Nginx
       systemd:
@@ -66,11 +53,4 @@
       poll: 0
       become: yes
       become_user: root
-
-    # - name: Use NPM to start the target
-    #   command: npm start
-    #   path: /var/www/html/todoapp/frontend
-    #   become: yes
-    #   become_user: root
-
 
