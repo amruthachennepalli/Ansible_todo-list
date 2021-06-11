@@ -24,21 +24,10 @@
 
     - name: Copy todo Service file
       copy:
-        src: /home/todoapp/todosystemd.service
+        src: systemd.service
         dest: /etc/systemd/system/todo.service
         remote_src: yes
-
-    # - name: Replace env
-    #   replace:
-    #     path: /etc/systemd/system/login.service
-    #     regexp: LOGIN_ENDPOINT
-    #     replace: 8080 
-
-    # - name: Replace env
-    #   replace:
-    #     path: /etc/systemd/system/login.service
-    #     regexp: USERS_ENDPOINT
-    #     replace: 172.31.93.195            
+           
 
     - name: Start todo Service
       systemd:

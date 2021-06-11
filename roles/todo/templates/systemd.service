@@ -1,0 +1,13 @@
+[Unit]
+Description = todo Service
+[Service]
+User=todoapp
+Environment=REDIS_PORT=6379
+Environment=REDIS_HOST=redis.zsdevops.online
+Environment=TODO_API_PORT=8080
+ExecStart=/bin/node /home/todoapp/todo/server.js
+Restart=on-failure
+SyslogIdentifier=todo
+
+[Install]
+WantedBy=multi-user.target
