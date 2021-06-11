@@ -22,12 +22,6 @@
         dest: ~/go/src/login
         remote_src: yes   
 
-    - name: Copy login Service file
-      copy:
-        src: ~/go/src/login/systemd.service
-        dest: /etc/systemd/system/login.service
-        remote_src: yes
-
     - name: Copy systemd service file
       template:
         src: systemd.service
