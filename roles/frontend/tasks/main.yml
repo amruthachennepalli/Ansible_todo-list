@@ -40,6 +40,18 @@
         regexp: root /var/www/html;
         replace: root /var/www/html/todoapp/frontend/dist; 
 
+    - name: Replace env
+      replace:
+        path: /var/www/html/todoapp/frontend/config/index.js
+        regexp: 127.0.0.1
+        replace: login.zsdevops.online 
+
+    - name: Replace env
+      replace:
+        path: /var/www/html/todoapp/frontend/config/index.js
+        regexp: 127.0.0.1
+        replace:todo.zsdevops.online    
+
     - name: Restart Nginx
       systemd:
         state: restarted
