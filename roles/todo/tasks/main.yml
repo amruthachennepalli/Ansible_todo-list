@@ -3,3 +3,46 @@
         name: npm
         update_cache: yes
         state: present 
+
+    - name: Add user todoapp
+      user:
+        name: todoapp
+        shell: /bin/bash 
+
+    - name: Download todo from nexus
+      get_url:
+        url: http://172.31.52.12:8081/repository/todo/todo-{{APP_VERSION}}.zip
+        dest: /tmp/todo.zip
+        username: admin
+        password: admin123
+ 
+    - name: Unzip todo Component
+      unarchive:
+        src: /tmp/todo.zip
+        dest: /home/todoapp/todo
+        remote_src: yes   
+
+    - name: Copy todo Service file
+      copy:
+        src: /home/todoapp/todosystemd.service
+        dest: /etc/systemd/system/todo.service
+        remote_src: yes
+
+    # - name: Replace env
+    #   replace:
+    #     path: /etc/systemd/system/login.service
+    #     regexp: LOGIN_ENDPOINT
+    #     replace: 8080 
+
+    # - name: Replace env
+    #   replace:
+    #     path: /etc/systemd/system/login.service
+    #     regexp: USERS_ENDPOINT
+    #     replace: 172.31.93.195            
+
+    - name: Start todo Service
+      systemd:
+        name: todo
+        daemon_reload: yes
+        state: todo
+        enabled: yes

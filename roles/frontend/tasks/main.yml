@@ -61,7 +61,4 @@
     #   become: yes
     #   become_user: root
 
-    # - name: Add user todoapp
-    #   user:
-    #     name: todoapp
-    #     shell: /bin/bash
+
