@@ -15,6 +15,11 @@
         dest: /tmp/todo.zip
         username: admin
         password: admin123
+
+    - name: Create dir
+      file:
+       path: /home/todoapp/todo 
+       state: directory         
  
     - name: Unzip todo Component
       unarchive:
