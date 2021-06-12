@@ -22,7 +22,7 @@
 
     - name: Install latest version of "openjdk-8-jre-headless" ignoring "install-recommends"
       apt:
-        name: openjdk-8-jre-headless
+        name: openjdk-8-jdk-headless
         update_cache: yes
         state: latest
         install_recommends: no
