@@ -20,15 +20,16 @@
     #     name: /opt/jdk-8u60-linux-x64.rpm
     #     state: present   
 
-    # - name: Install latest version of "openjdk-8-jre-headless" ignoring "install-recommends"
-    #   apt:
-    #     name: openjdk-8-jre-headless
-    #     state: latest
-    #     install_recommends: yes
-    - name: Install the version '8.00' of package "java"
+    - name: Install latest version of "openjdk-8-jre-headless" ignoring "install-recommends"
       apt:
-        name: java=8.00
-        state: present    
+        name: openjdk-8-jre-headless
+        update_cache: yes
+        state: latest
+        install_recommends: yes
+    # - name: Install the version '8.00' of package "java"
+    #   apt:
+    #     name: java=8.00
+    #     state: present    
     
     - name: Maven Installation 
       apt:
