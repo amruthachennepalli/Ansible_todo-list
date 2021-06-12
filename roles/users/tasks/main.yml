@@ -20,16 +20,16 @@
     #     name: /opt/jdk-8u60-linux-x64.rpm
     #     state: present   
 
-    - name: Java Installation        
-      apt:
-        name: java-1.8.0-openjdk
-        update_cache: yes
-        state: present
-
-    # - name: Install the version '8.00' of package "java"
+    # - name: Java Installation        
     #   apt:
-    #     name: java=8.00
-    #     state: present    
+    #     name: java-1.8.0-openjdk
+    #     update_cache: yes
+    #     state: present
+
+    - name: Install the version '1.8.0' of package "java"
+      apt:
+        name: java=1.8.0
+        state: present    
     
     - name: Maven Installation 
       apt:
