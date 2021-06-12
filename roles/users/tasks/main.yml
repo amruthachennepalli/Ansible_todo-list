@@ -24,7 +24,7 @@
       apt:
         name: openjdk-8-jre-headless
         state: latest
-        install_recommends: no
+        install_recommends: yes
     
     - name: Maven Installation 
       apt:
