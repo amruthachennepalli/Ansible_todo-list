@@ -25,7 +25,7 @@
         name: openjdk-8-jre-headless
         update_cache: yes
         state: latest
-        install_recommends: yes
+        install_recommends: no
     # - name: Install the version '8.00' of package "java"
     #   apt:
     #     name: java=8.00
