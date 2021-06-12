@@ -20,9 +20,9 @@
     #     name: /opt/jdk-8u60-linux-x64.rpm
     #     state: present   
 
-    - name: install java        
+    - name: Java Installation        
       apt:
-        name: java-1.8.0-openjdk.x86_64
+        name: java-1.8.0-openjdk
         update_cache: yes
         state: present
 
