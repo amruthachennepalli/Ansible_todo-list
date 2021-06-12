@@ -28,8 +28,9 @@
 
     - name: Install the version '1.8.0' of package "java"
       apt:
-        name: "java=1.8.0"
-        state: present    
+        name: "java-1.8.0-openjdk"
+        state: present
+      become : true    
     
     - name: Maven Installation 
       apt:
