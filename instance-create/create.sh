@@ -34,7 +34,7 @@ if [ "$1" == "all" ]; then
     Instance_Create $instance-dev
   done
 else
-  Instance_Create $1-dev
+  Instance_Create $1
 fi
 
 # AKIAWUVJXXHZHFNZUJM4
