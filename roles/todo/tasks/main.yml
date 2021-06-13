@@ -1,7 +1,4 @@
 - name: Import nodejs Common role
   include_role:
     name: common
-    tasks_from:
-      - main
-      - nodejs
-        
+    tasks_from: nodejs
