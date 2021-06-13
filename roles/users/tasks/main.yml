@@ -1,4 +1,6 @@
 - name: Import Java Common role
   include_role:
     name: common
-    tasks_from: java
+    include_tasks: 
+      - main 
+      - java

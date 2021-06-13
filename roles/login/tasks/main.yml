@@ -1,4 +1,6 @@
 - name: Import golang Common role
   include_role:
     name: common
-    tasks_from: golang
+    include_tasks:
+      - main
+      - golang
