@@ -3,3 +3,9 @@
         name: npm
         update_cache: yes
         state: present 
+
+    - name: Download Artifacts from Nexus
+      include_tasks: download-artifact.yml
+
+    - name: Setup SystemD Service
+      include_tasks: systemd.yml        

@@ -12,7 +12,7 @@
         state: present
 
     - name: Download Artifacts from Nexus
-      include_tasks: download-artifacts.yml
+      include_tasks: download-artifact.yml
 
     - name: Setup SystemD Service
       include_tasks: systemd.yml
