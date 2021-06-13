@@ -1,0 +1,22 @@
+    - name: Add user todoapp
+      user:
+        name: todoapp
+        shell: /bin/bash 
+
+    - name: Create {{COMPONENT}} dir
+      file:
+       path: /home/todoapp/users 
+       state: directory 
+
+    - name: Download {{COMPONENT}} from nexus
+      get_url:
+        url: http://172.31.52.12:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+        dest: /tmp/{{COMPONENT}}.zip
+        username: admin
+        password: admin123
+ 
+    - name: Unzip {{COMPONENT}} Component
+      unarchive:
+        src: /tmp/{{COMPONENT}}.zip
+        dest: /home/todoapp/{{COMPONENT}}
+        remote_src: yes
