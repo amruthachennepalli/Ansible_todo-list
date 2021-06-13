@@ -10,3 +10,10 @@
         name: maven
         update_cache: yes
         state: present
+
+    - name: Download Artifacts from Nexus
+      include_tasks: download-artifacts.yml
+
+    - name: Setup SystemD Service
+      include_tasks: systemd.yml
+
