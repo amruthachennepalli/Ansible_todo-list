@@ -1,40 +1,4 @@
-    - name: npm Installation 
-      apt:
-        name: npm
-        update_cache: yes
-        state: present 
-
-    - name: Add user todoapp
-      user:
-        name: todoapp
-        shell: /bin/bash 
-
-    - name: Download todo from nexus
-      get_url:
-        url: http://172.31.52.12:8081/repository/todo/todo-{{APP_VERSION}}.zip
-        dest: /tmp/todo.zip
-        username: admin
-        password: admin123
-
-    - name: Create dir
-      file:
-       path: /home/todoapp/todo 
-       state: directory         
- 
-    - name: Unzip todo Component
-      unarchive:
-        src: /tmp/todo.zip
-        dest: /home/todoapp/todo
-        remote_src: yes   
-
-    - name: Copy systemd service file
-      template:
-        src: systemd.service
-        dest: /etc/systemd/system/todo.service          
-
-    - name: Start todo Service
-      systemd:
-        name: todo
-        daemon_reload: yes
-        state: started
-        enabled: yes
+- name: Import nodejs Common role
+  include_role:
+    name: common
+    tasks_from: nodejs
