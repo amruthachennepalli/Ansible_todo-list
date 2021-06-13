@@ -24,13 +24,13 @@ Instance_Create() {
   IPADDRESS=$(aws ec2 describe-instances     --filters Name=tag:Name,Values=${COMPONENT}   | jq .Reservations[].Instances[].PrivateIpAddress | grep -v null |xargs)
 
   sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/record.json
-  aws route53 change-resource-record-sets --hosted-zone-id Z01109932OAEV19U6FDDX --change-batch file:///tmp/record.json
+  aws route53 change-resource-record-sets --hosted-zone-id Z02236711B9U9TNUOF7VY --change-batch file:///tmp/record.json
   sed -i -e "/${COMPONENT}/ d" ../inv
   echo "${IPADDRESS} COMPONENT=$(echo ${COMPONENT} | awk -F - '{print $1}')" >>../inv
 }
 
 if [ "$1" == "all" ]; then
-  for instance in frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment ; do
+  for instance in frontend todo login users redis ; do
     Instance_Create $instance-dev
   done
 else
