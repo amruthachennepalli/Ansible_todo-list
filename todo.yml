@@ -1,4 +1,4 @@
-- name: Setup roboshop project
+- name: Setup todo project
   hosts: all
   become: yes
   ## This become can also be used at task level
