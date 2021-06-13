@@ -5,7 +5,7 @@
 
     - name: Create {{COMPONENT}} dir
       file:
-       path: /home/todoapp/users 
+       path: /home/todoapp/{{COMPONENT}} 
        state: directory 
 
     - name: Download {{COMPONENT}} from nexus
