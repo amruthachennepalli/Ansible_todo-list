@@ -1,22 +1,27 @@
-    - name: Add user todoapp
-      user:
-        name: todoapp
-        shell: /bin/bash 
+- name: Add user todoapp
+  user:
+    name: todoapp
+    shell: /bin/bash  
 
-    - name: Create {{COMPONENT}} dir
-      file:
-       path: /home/todoapp/{{COMPONENT}} 
-       state: directory 
+- name: Download {{COMPONENT}} from nexus
+  get_url:
+    url: http://172.31.52.12:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+    dest: /tmp/{{COMPONENT}}.zip
+    username: admin
+    password: admin123
 
-    - name: Download {{COMPONENT}} from nexus
-      get_url:
-        url: http://172.31.52.12:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
-        dest: /tmp/{{COMPONENT}}.zip
-        username: admin
-        password: admin123
+- name: Clean the old artifacts
+  file:
+    path: /home/todoapp/{{COMPONENT}}
+    state: absent
+
+- name: Create the artifact path
+  file:
+    path: /home/todoapp/{{COMPONENT}}
+    state: directory        
  
-    - name: Unzip {{COMPONENT}} Component
-      unarchive:
-        src: /tmp/{{COMPONENT}}.zip
-        dest: /home/todoapp/{{COMPONENT}}
-        remote_src: yes
+- name: Unzip {{COMPONENT}} Component
+  unarchive:
+    src: /tmp/{{COMPONENT}}.zip
+    dest: /home/todoapp/{{COMPONENT}}
+    remote_src: yes
