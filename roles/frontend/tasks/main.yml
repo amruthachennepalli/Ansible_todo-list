@@ -1,6 +1,7 @@
     - name: Import main Common role
       include_role:
-        name: commo
+        name: common
+        tasks_from: main        
 
     - name: NGINX Installation 
       apt:
