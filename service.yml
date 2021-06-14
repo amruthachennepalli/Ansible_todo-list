@@ -1,0 +1,37 @@
+# ANSIBLE(MODULE EXPLAINED):
+
+# Create a task in main.yml to stop and start a service 'ssh'
+
+# Don't use with_item iterator and restart. Try to stop and start the service.
+# ------------------------------
+
+# Commands:
+
+# Test using:
+# service sshd status
+
+# Run playbook using:
+# ansible-playbook main.yml
+
+
+# The steps are:
+
+# 1.First check whether the service is available in /etc/init.d/ssh.
+
+- name: Check if Service Exists 
+  stat: path=/etc/systemd 
+  register: service_status
+
+# 2.If service exists then stop it after checking it's existence in /etc/init.d/ssh(in step 1)
+
+- name: Stop Service 
+  service: name=ssh state=stopped 
+  when: service_status.stat.exists 
+  register: service_stopped
+
+# 3.Start it after stopping it in same way like step 2.
+
+- name: Start Service 
+  service: name=ssh state=started 
+  when: service_status.stat.exists 
+  register: service_stopped
