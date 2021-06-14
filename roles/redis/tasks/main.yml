@@ -15,17 +15,8 @@
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
     
-  notify:
-     - restart redis.service
-
-- name: stop Redis
+- name: Start Redis
   systemd:
     name: redis
-    state: stopped
-    enabled: yes
-
-- name: reload Redis
-  systemd:
-    name: redis
-    state: reloaded
+    state: restarted
     enabled: yes
