@@ -2,7 +2,9 @@
   hosts: all
   become: yes
   ## This become can also be used at task level
+
   roles:  
+  
     - role: frontend
       tags: frontend
       when: COMPONENT == "frontend"
@@ -19,7 +21,7 @@
       tags: users
       when: COMPONENT == "users"
 
-    # - role: redis
-    #   tags: redis
-    #   when: COMPONENT == "redis"                   
+    - role: redis
+      tags: redis
+      when: COMPONENT == "redis"                   
             
