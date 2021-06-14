@@ -18,10 +18,10 @@
   notify:
      - restart redis.service
 
-- name: Start Redis
+- name: stop Redis
   systemd:
     name: redis
-    state: started
+    state: stopped
     enabled: yes
 
 - name: reload Redis
