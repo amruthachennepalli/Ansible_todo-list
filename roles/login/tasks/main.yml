@@ -2,4 +2,3 @@
   include_role:
     name: common
     include_tasks: golang
-
