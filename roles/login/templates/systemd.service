@@ -4,7 +4,7 @@ Description = login Service
 User=root
 Environment=AUTH_API_PORT=8080
 Environment=USERS_API_ADDRESS=http://users-{{ENV}}.zsdevops.online:8080
-ExecStart=/root/go/src/login/login-ci
+ExecStart=/home/todoapp/login/login-ci
 Restart=on-failure
 SyslogIdentifier=login
 
