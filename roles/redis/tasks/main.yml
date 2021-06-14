@@ -21,5 +21,11 @@
 - name: Start Redis
   systemd:
     name: redis
+    state: started
+    enabled: yes
+
+- name: reload Redis
+  systemd:
+    name: redis
     state: reloaded
     enabled: yes
