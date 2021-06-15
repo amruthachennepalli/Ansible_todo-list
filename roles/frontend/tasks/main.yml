@@ -5,11 +5,6 @@
         update_cache: yes
         state: present
 
-    - name: Start Nginx
-      systemd:
-       name: nginx
-       enabled: yes
-
     - name: npm Installation 
       apt:
         name: npm
