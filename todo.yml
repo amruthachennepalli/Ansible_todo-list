@@ -3,7 +3,11 @@
   become: yes
   ## This become can also be used at task level
 
-  roles:  
+  roles: 
+
+    - role: frontend
+      tags: frontend
+      when: COMPONENT == "frontend"
 
     - role: users
       tags: users
