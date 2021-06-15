@@ -38,7 +38,8 @@
       replace:
         path: /etc/nginx/sites-enabled/default
         regexp: root /var/www/html;
-        replace: root /var/www/html/todoapp/frontend/dist;   
+        replace: root /var/www/html/todoapp/frontend/dist;  
+      notify : restart nginx   
 
     - name: Copy inde.js file
       template:
