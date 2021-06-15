@@ -45,9 +45,9 @@
         src: index.js
         dest: /var/www/html/todoapp/frontend/config/index.js        
 
-    - name: Restart Nginx
+    - name: start Nginx
       systemd:
-        state: restarted
+        state: started
         name: nginx
         enabled: yes    
 
