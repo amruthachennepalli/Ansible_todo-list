@@ -9,9 +9,10 @@
     path: /etc/redis/redis.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
-    
+  notify: Restart redis 
+
 - name: Start Redis
   systemd:
     name: redis
-    state: restarted
+    state: started
     enabled: yes
