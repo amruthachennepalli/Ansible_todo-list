@@ -39,20 +39,28 @@
     - name: Copy inde.js file
       template:
         src: index.js
-        dest: /var/www/html/todoapp/frontend/config/index.js        
+        dest: /var/www/html/todoapp/frontend/config/index.js  
 
     - name: start Nginx
       systemd:
         state: started
         name: nginx
-        enabled: yes    
+        enabled: yes 
 
-    - name: Use NPM to start the target
-      command: npm start
-      args:
-        chdir: /var/www/html/todoapp/frontend
-      async: 42
-      poll: 0
-      become: yes
-      become_user: root
+    - name: Copy systemd file
+      systemd:
+        name: systemd.service
+        daemon_reload: yes
+        state: started
+        enabled: yes       
+        
+
+    # - name: Use NPM to start the target
+    #   command: npm start
+    #   args:
+    #     chdir: /var/www/html/todoapp/frontend
+    #   async: 42
+    #   poll: 0
+    #   become: yes
+    #   become_user: root
 
