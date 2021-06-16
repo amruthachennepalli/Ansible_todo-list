@@ -54,15 +54,15 @@
         enabled: yes 
 
     - name: Running NPM install
-      npm: path=/var/www/html/todoapp/frontend
+      npm: path=/var/www/html/todoapp/backened
       register: npm_finished
 
     - name: Stop todoapp
-      command: pm2 stop app chdir=/var/www/html/todoapp/frontend
+      command: pm2 stop app chdir=/var/www/html/todoapp/backened
       ignore_errors: yes
 
     - name: Start todoapp
-      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend
+      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/backened
       ignore_errors: yes
       when: npm_finished.changed      
 
