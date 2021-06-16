@@ -53,16 +53,22 @@
         name: nginx
         enabled: yes 
 
+
+    - name: Copy ecosystem.config.js file
+      template:
+        src: ecosystem.config.js
+        dest: /var/www/html/todoapp/frontend 
+
     - name: Running NPM install
-      npm: path=/var/www/html/todoapp/backened
+      npm: path=/var/www/html/todoapp/frontend
       register: npm_finished
 
     - name: Stop todoapp
-      command: pm2 stop app chdir=/var/www/html/todoapp/backened
+      command: pm2 stop app chdir=/var/www/html/todoapp/frontend
       ignore_errors: yes
 
     - name: Start todoapp
-      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/backened
+      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend
       ignore_errors: yes
       when: npm_finished.changed      
 
