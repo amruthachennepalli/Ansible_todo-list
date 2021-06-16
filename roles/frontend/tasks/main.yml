@@ -60,8 +60,17 @@
         dest: /var/www/html/todoapp/frontend 
 
     - name: Running NPM install
-      npm: path=/var/www/html/todoapp/frontend/config 
+      npm: path=/var/www/html/todoapp/frontend 
       register: npm_finished
+      
+    - name: Use NPM to start the target
+      command: npm start
+      args:
+        chdir: /var/www/html/todoapp/frontend
+      async: 42
+      poll: 0
+      become: yes
+      become_user: root      
 
     - name: Stop todoapp
       command: pm2 stop app chdir=/var/www/html/todoapp/frontend/config 
@@ -80,12 +89,5 @@
     #     enabled: yes       
         
 
-    # - name: Use NPM to start the target
-    #   command: npm start
-    #   args:
-    #     chdir: /var/www/html/todoapp/frontend
-    #   async: 42
-    #   poll: 0
-    #   become: yes
-    #   become_user: root
+
 
