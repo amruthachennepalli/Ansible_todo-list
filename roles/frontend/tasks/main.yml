@@ -62,7 +62,7 @@
     - name: Running NPM install
       npm: path=/var/www/html/todoapp/frontend 
       register: npm_finished
-      
+
     - name: Use NPM to start the target
       command: npm start
       args:
@@ -72,9 +72,9 @@
       become: yes
       become_user: root      
 
-    - name: Stop todoapp
-      command: pm2 stop app chdir=/var/www/html/todoapp/frontend/config 
-      ignore_errors: yes
+    # - name: Stop todoapp
+    #   command: pm2 stop app chdir=/var/www/html/todoapp/frontend/config 
+    #   ignore_errors: yes
 
     - name: Start todoapp
       command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend/config 
