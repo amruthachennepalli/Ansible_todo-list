@@ -9,7 +9,13 @@
       apt:
         name: npm
         update_cache: yes
-        state: present         
+        state: present  
+
+    - name: Install pm2
+      npm: 
+        name: pm2 
+        global: yes 
+        production: yes        
 
     - name: Create dir
       file:
@@ -47,12 +53,17 @@
         name: nginx
         enabled: yes 
 
-    - name: Copy systemd file
-      systemd:
-        name: systemd.service
-        daemon_reload: yes
-        state: started
-        enabled: yes       
+    - name: Running NPM install
+      npm: path=/var/www/html/todoapp/frontend
+      register: npm_finished
+ 
+
+    # - name: Copy systemd file
+    #   systemd:
+    #     name: systemd.service
+    #     daemon_reload: yes
+    #     state: started
+    #     enabled: yes       
         
 
     # - name: Use NPM to start the target
