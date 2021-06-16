@@ -56,7 +56,17 @@
     - name: Running NPM install
       npm: path=/var/www/html/todoapp/frontend
       register: npm_finished
- 
+
+    - name: Stop todoapp
+      sudo_user: ubuntu
+      command: pm2 stop app chdir=/var/www/html/todoapp/frontend
+      ignore_errors: yes
+
+    - name: Start APP
+      sudo_user: ubuntu
+      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend
+      ignore_errors: yes
+      when: npm_finished.changed      
 
     # - name: Copy systemd file
     #   systemd:
