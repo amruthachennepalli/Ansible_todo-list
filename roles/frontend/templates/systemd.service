@@ -1,10 +1,4 @@
-[Unit]
-Description = frontend Service
-[Service]
-User=root
 Restart=on-failure
 WorkingDirectory=/var/www/html/frontend
 ExecStart=npm start
-
-[Install]
-WantedBy=multi-user.target
+Restart=on-failure
