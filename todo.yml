@@ -5,9 +5,13 @@
 
   roles: 
 
-    - role: frontend
-      tags: frontend
-      when: COMPONENT == "frontend"
+    - role: redis
+      tags: redis
+      when: COMPONENT == "redis"
+
+    - role: todo
+      tags: todo
+      when: COMPONENT == "todo"
 
     - role: users
       tags: users
@@ -15,15 +19,7 @@
 
     - role: login
       tags: login
-      when: COMPONENT == "login" 
-
-    - role: redis
-      tags: redis
-      when: COMPONENT == "redis" 
-
-    - role: todo
-      tags: todo
-      when: COMPONENT == "todo"       
+      when: COMPONENT == "login"        
 
     - role: frontend
       tags: frontend
