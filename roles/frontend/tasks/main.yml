@@ -1,93 +1,56 @@
+- name: NGINX Installation 
+  apt:
+    name: nginx
+    update_cache: yes
+    state: present
 
-    - name: NGINX Installation 
-      apt:
-        name: nginx
-        update_cache: yes
-        state: present
+- name: npm Installation 
+  apt:
+    name: npm
+    update_cache: yes
+    state: present         
 
-    - name: npm Installation 
-      apt:
-        name: npm
-        update_cache: yes
-        state: present  
-
-    - name: Install pm2
-      npm: 
-        name: pm2 
-        global: yes 
-        production: yes        
-
-    - name: Create dir
-      file:
-       path: /var/www/html/todoapp/frontend
-       state: directory      
+- name: Create dir
+  file:
+    path: /var/www/html/todoapp/frontend
+    state: directory      
     
-    - name: Download frontend Component
-      get_url:
-        url: http://172.31.52.12:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
-        dest: /tmp/frontend.zip
-        username: admin
-        password: admin123
+- name: Download frontend Component
+  get_url:
+    url: http://172.31.52.12:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+    dest: /tmp/frontend.zip
+    username: admin
+    password: admin123
 
-    - name: Unzip frontend Component
-      unarchive:
-        src: /tmp/frontend.zip
-        dest: /var/www/html/todoapp/frontend
-        remote_src: yes
+- name: Unzip frontend Component
+  unarchive:
+    src: /tmp/frontend.zip
+    dest: /var/www/html/todoapp/frontend
+    remote_src: yes
 
-    - name: Replace before the expression till the begin of the file (requires Ansible >= 2.4)
-      replace:
-        path: /etc/nginx/sites-enabled/default
-        regexp: root /var/www/html;
-        replace: root /var/www/html/todoapp/frontend/dist;  
-      notify : restart nginx   
+- name: Replace dist path
+  replace:
+    path: /etc/nginx/sites-enabled/default
+    regexp: root /var/www/html;
+    replace: root /var/www/html/todoapp/frontend/dist;  
+    notify : restart nginx   
 
-    - name: Copy index.js file
-      template:
-        src: index.js
-        dest: /var/www/html/todoapp/frontend/config/index.js  
+- name: Copy index.js file
+  template:
+    src: index.js
+    dest: /var/www/html/todoapp/frontend/config/index.js  
 
-    - name: start Nginx
-      systemd:
-        state: started
-        name: nginx
-        enabled: yes 
+- name: start Nginx
+  systemd:
+    state: started
+    name: nginx
+    enabled: yes 
 
-
-    # - name: Copy ecosystem.config.js file
-    #   template:
-    #     src: ecosystem.config.js
-    #     dest: /var/www/html/todoapp/frontend 
-
-    # - name: Running NPM install
-    #   npm: path=/var/www/html/todoapp/frontend 
-    #   register: npm_finished
-
-    - name: Use NPM to start the target
-      command: npm start
-      args:
-        chdir: /var/www/html/todoapp/frontend
-      async: 42
-      poll: 0
-      become: yes
-      become_user: root      
-
-    # - name: Stop todoapp
-    #   command: pm2 stop app chdir=/var/www/html/todoapp/frontend/config 
-    #   ignore_errors: yes
-
-    # - name: Start todoapp
-    #   command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend/config 
-    #   ignore_errors: yes
-    #   when: npm_finished.changed      
-
-    # - name: Copy systemd file
-    #   systemd:
-    #     name: systemd.service
-    #     daemon_reload: yes
-    #     state: started
-    #     enabled: yes       
-        
-
-
-
+- name: Use NPM to start the target
+  command: npm start
+  args:
+    chdir: /var/www/html/todoapp/frontend
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root   
