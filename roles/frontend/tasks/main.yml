@@ -40,9 +40,9 @@
         path: /etc/nginx/sites-enabled/default
         regexp: root /var/www/html;
         replace: root /var/www/html/todoapp/frontend/dist;  
-      notify : restart nginx   
+      # notify : restart nginx   
 
-    - name: Copy inde.js file
+    - name: Copy index.js file
       template:
         src: index.js
         dest: /var/www/html/todoapp/frontend/config/index.js  
@@ -54,14 +54,14 @@
         enabled: yes 
 
 
-    - name: Copy ecosystem.config.js file
-      template:
-        src: ecosystem.config.js
-        dest: /var/www/html/todoapp/frontend 
+    # - name: Copy ecosystem.config.js file
+    #   template:
+    #     src: ecosystem.config.js
+    #     dest: /var/www/html/todoapp/frontend 
 
-    - name: Running NPM install
-      npm: path=/var/www/html/todoapp/frontend 
-      register: npm_finished
+    # - name: Running NPM install
+    #   npm: path=/var/www/html/todoapp/frontend 
+    #   register: npm_finished
 
     - name: Use NPM to start the target
       command: npm start
@@ -76,10 +76,10 @@
     #   command: pm2 stop app chdir=/var/www/html/todoapp/frontend/config 
     #   ignore_errors: yes
 
-    - name: Start todoapp
-      command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend/config 
-      ignore_errors: yes
-      when: npm_finished.changed      
+    # - name: Start todoapp
+    #   command: pm2 start index.js --name todoapp chdir=/var/www/html/todoapp/frontend/config 
+    #   ignore_errors: yes
+    #   when: npm_finished.changed      
 
     # - name: Copy systemd file
     #   systemd:
