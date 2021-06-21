@@ -39,3 +39,8 @@ fi
 
 # AKIAWUVJXXHZHFNZUJM4
 # 36T77vUlDQ7Uv8VZcz9xSgB3Q/NuekTicKs7aH/L
+
+# key: Name , Value: Deployment 
+
+# AKIAWUVJXXHZBOP4NPUO
+# LxX0V2V9XhYkVx9a6qZHdlp4MoKlgiBE4AD0pIPB 
