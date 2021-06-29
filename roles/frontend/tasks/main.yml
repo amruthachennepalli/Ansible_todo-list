@@ -49,7 +49,16 @@
 - name: Copy {{COMPONENT}} systemd service file
   template:
     src: systemd.service
-    dest: /etc/systemd/system/{{COMPONENT}}.service    
+    dest: /etc/systemd/system/{{COMPONENT}}.service  
+
+- name: Use NPM to start the target
+  command: npm start
+  args:
+    chdir: /var/www/html/todoapp/frontend
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root         
 
 - name: Start {{COMPONENT}} Service
   systemd:
@@ -58,11 +67,3 @@
     state: started
     enabled: yes   
 
-# - name: Use NPM to start the target
-#   command: npm start
-#   args:
-#     chdir: /var/www/html/todoapp/frontend
-#   async: 42
-#   poll: 0
-#   become: yes
-#   become_user: root   
