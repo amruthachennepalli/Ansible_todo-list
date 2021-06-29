@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-LID=lt-0dff91f714ca1d54d
+LID=lt-0d1ddc380802b3fb3
 LVER=1
 #COMPONENT=$1
 
@@ -15,7 +15,7 @@ Instance_Create() {
   INSTANCE_EXISTS=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[])
   STATE=$(aws ec2 describe-instances     --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[].Instances[].State.Name | xargs)
   if [ -z "${INSTANCE_EXISTS}" -o "$STATE" == "terminated"  ]; then
-    aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${LVER}  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}, {Key=Project,Value=TODO}]" | jq
+    aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${LVER}  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}, {Key=Instance,Value=Ubuntu-DevOps-practice}]" | jq
   else
     echo "Instance ${COMPONENT} already exists"
   fi
@@ -37,12 +37,5 @@ else
   Instance_Create $1-dev
 fi
 
-# AKIAWUVJXXHZHFNZUJM4
-# 36T77vUlDQ7Uv8VZcz9xSgB3Q/NuekTicKs7aH/L
-
-# key: Name , Value: Deployment 
-
-# AKIAWUVJXXHZBOP4NPUO
-# LxX0V2V9XhYkVx9a6qZHdlp4MoKlgiBE4AD0pIPB 
-# AKIAWUVJXXHZOF2KWOM3
-# z9MtkQ5MVmVUZvQ4FZMNFYgC7WWn7lbBIMFZF4s9
+# AKIA4UOVAQ7BMC3R47P6
+# 5Wcq2pUu97njYWJYfrFnWabafnU9z4b9PmqufA11 
