@@ -58,12 +58,5 @@
   async: 42
   poll: 0
   become: yes
-  become_user: root         
-
-- name: Start {{COMPONENT}} Service
-  systemd:
-    name: "{{COMPONENT}}"
-    daemon_reload: yes
-    state: started
-    enabled: yes   
-
+  become_user: root       
+  become_user: root       
