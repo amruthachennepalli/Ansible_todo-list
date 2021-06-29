@@ -46,11 +46,6 @@
     name: nginx
     enabled: yes 
 
-- name: Copy {{COMPONENT}} systemd service file
-  template:
-    src: systemd.service
-    dest: /etc/systemd/system/{{COMPONENT}}.service  
-
 - name: Use NPM to start the target
   command: npm start
   args:
