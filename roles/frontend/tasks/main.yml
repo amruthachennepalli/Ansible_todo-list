@@ -27,6 +27,11 @@
     src: index.js
     dest: /var/www/html/todoapp/frontend/config/index.js  
 
+- name: Install Node Exporter Prometheus Monitoring
+  include_role:
+    name: common
+    tasks_from: node_exporter    
+
 - name: NPM start 
   command: npm start
   args:
@@ -34,9 +39,4 @@
   async: 42
   poll: 0
   become: yes
-  become_user: root              
-
-- name: Install Node Exporter Prometheus Monitoring
-  include_role:
-    name: common
-    tasks_from: node_exporter
+  become_user: root       
