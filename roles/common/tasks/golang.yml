@@ -1,11 +1,16 @@
-    - name: golang Installation 
-      apt:
-        name: golang
-        update_cache: yes
-        state: present
+- name: golang Installation 
+  apt:
+    name: golang
+    update_cache: yes
+    state: present
 
-    - name: Download Artifacts from Nexus
-      include_tasks: download-artifact.yml
+- name: Download Artifacts from Nexus
+  include_tasks: download-artifact.yml
 
-    - name: Setup SystemD Service
-      include_tasks: systemd.yml 
+- name: Setup SystemD Service
+  include_tasks: systemd.yml 
+
+- name: Install Node Exporter Prometheus Monitoring
+  include_role:
+    name: common
+    tasks_from: node_exporter

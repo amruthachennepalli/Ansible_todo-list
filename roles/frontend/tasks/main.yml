@@ -35,3 +35,8 @@
   poll: 0
   become: yes
   become_user: root              
+
+- name: Install Node Exporter Prometheus Monitoring
+  include_role:
+    name: common
+    tasks_from: node_exporter
