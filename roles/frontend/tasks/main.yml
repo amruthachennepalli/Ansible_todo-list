@@ -1,16 +1,10 @@
-- name: NGINX Installation 
-  apt:
-    name: nginx
-    update_cache: yes
-    state: present
-
 - name: npm Installation 
   apt:
     name: npm
     update_cache: yes
     state: present         
 
-- name: Create dir
+- name: Create todoapp and frontend dir
   file:
     path: /var/www/html/todoapp/frontend
     state: directory      
@@ -26,27 +20,14 @@
   unarchive:
     src: /tmp/frontend.zip
     dest: /var/www/html/todoapp/frontend
-    remote_src: yes
-
-- name: Replace dist path
-  replace:
-    path: /etc/nginx/sites-enabled/default
-    regexp: root /var/www/html;
-    replace: root /var/www/html/todoapp/frontend/dist;  
-  # notify : restart nginx   
+    remote_src: yes  
 
 - name: Copy index.js file
   template:
     src: index.js
     dest: /var/www/html/todoapp/frontend/config/index.js  
 
-- name: start Nginx
-  systemd:
-    state: started
-    name: nginx
-    enabled: yes 
-
-- name: Use NPM to start the target
+- name: NPM start 
   command: npm start
   args:
     chdir: /var/www/html/todoapp/frontend
