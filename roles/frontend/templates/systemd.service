@@ -3,7 +3,7 @@ Description = frontend Service
 [Service]
 User=root
 WorkingDirectory=/var/www/html/todoapp/frontend
-ExecStart=/bin/node/npm start 
+ExecStart=/usr/bin/npm start 
 Restart=on-failure
 SyslogIdentifier=frontend
 
