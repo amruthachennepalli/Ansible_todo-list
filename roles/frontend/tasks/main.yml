@@ -30,13 +30,25 @@
 - name: Install Node Exporter Prometheus Monitoring
   include_role:
     name: common
-    tasks_from: node_exporter    
+    tasks_from: node_exporter   
 
-- name: NPM start 
-  command: npm start
-  args:
-    chdir: /var/www/html/todoapp/frontend
-  async: 42
-  poll: 0
-  become: yes
-  become_user: root       
+- name: Copy systemd file
+  template:
+    src: systemd.service
+    dest: /etc/systemd/system/frontend.service
+
+- name: Start frontend Service
+  systemd:
+    name: "frontend"
+    daemon_reload: yes
+    state: started
+    enabled: yes    
+
+# - name: NPM start 
+#   command: npm start
+#   args:
+#     chdir: /var/www/html/todoapp/frontend
+#   async: 42
+#   poll: 0
+#   become: yes
+#   become_user: root       
