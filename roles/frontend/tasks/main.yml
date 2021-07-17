@@ -27,10 +27,10 @@
     src: index.js
     dest: /var/www/html/todoapp/frontend/config/index.js  
 
-- name: Install Node Exporter Prometheus Monitoring
-  include_role:
-    name: common
-    tasks_from: node_exporter   
+# - name: Install Node Exporter Prometheus Monitoring
+#   include_role:
+#     name: common
+#     tasks_from: node_exporter   
 
 - name: Copy systemd file
   template:
