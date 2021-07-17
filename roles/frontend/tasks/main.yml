@@ -22,16 +22,6 @@
     dest: /var/www/html/todoapp/frontend
     remote_src: yes  
 
-# - name: Copy index.js file
-#   template:
-#     src: index.js
-#     dest: /var/www/html/todoapp/frontend/config/index.js  
-
-# - name: Install Node Exporter Prometheus Monitoring
-#   include_role:
-#     name: common
-#     tasks_from: node_exporter   
-
 - name: Copy systemd file
   template:
     src: systemd.service
@@ -43,6 +33,43 @@
     daemon_reload: yes
     state: started
     enabled: yes    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - name: Copy index.js file
+#   template:
+#     src: index.js
+#     dest: /var/www/html/todoapp/frontend/config/index.js  
+
+# - name: Install Node Exporter Prometheus Monitoring
+#   include_role:
+#     name: common
+#     tasks_from: node_exporter      
 
 # - name: NPM start 
 #   command: npm start
