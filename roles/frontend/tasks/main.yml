@@ -22,10 +22,10 @@
     dest: /var/www/html/todoapp/frontend
     remote_src: yes  
 
-- name: Copy index.js file
-  template:
-    src: index.js
-    dest: /var/www/html/todoapp/frontend/config/index.js  
+# - name: Copy index.js file
+#   template:
+#     src: index.js
+#     dest: /var/www/html/todoapp/frontend/config/index.js  
 
 # - name: Install Node Exporter Prometheus Monitoring
 #   include_role:
