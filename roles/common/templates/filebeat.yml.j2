@@ -5,7 +5,7 @@ filebeat.inputs:
 - type: log
 enabled: false
 paths:
-    - {{ log_filename }}
+    - {{ log_filename.file }}
 
 # ============================== Filebeat modules ==============================
 

@@ -80,7 +80,16 @@
 # - name: Copy index.js file
 #   template:
 #     src: index.js
-#     dest: /var/www/html/todoapp/frontend/config/index.js 
+#     dest: /var/www/html/todoapp/frontend/config/index.js
+
+# - name: Install Filebeat Monitoring
+#   include_role:
+#     name: common
+#     tasks_from: filebeat
+#   vars:
+#     IS_STRUCTURED: false
+#     LOG_FILES:
+#       - { file: "/var/log/nginx/access.log", type: "nginx_access" }
 
 # - name: NPM start 
 #   command: npm start
