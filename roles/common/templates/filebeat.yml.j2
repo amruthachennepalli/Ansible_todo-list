@@ -22,6 +22,7 @@ filebeat.config.modules:
 
 setup.template.settings:
   index.number_of_shards: 1
+{% endfor %}
 
 {% if IS_STRUCTURED %}
 # ---------------------------- Elasticsearch Output ----------------------------
