@@ -9,7 +9,7 @@
     path: /var/www/html/todoapp/frontend
     state: directory      
     
-- name: Download ${{COMPONENT}} from nexus
+- name: Download frontend from nexus
   get_url:
     url: http://172.31.68.193:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
     dest: /tmp/frontend.zip
