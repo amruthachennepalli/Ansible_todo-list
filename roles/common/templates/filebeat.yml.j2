@@ -18,11 +18,16 @@ filebeat.config.modules:
 setup.template.settings:
   index.number_of_shards: 1
 
+{% if IS_STRUCTURED %}
 # ---------------------------- Elasticsearch Output ----------------------------
 
 output.elasticsearch:
   hosts: ["localhost:9200"]
 
+{% else%}
+
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   hosts: ["localhost:5044"]
+
+{% endif %}
