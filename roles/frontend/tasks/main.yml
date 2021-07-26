@@ -27,15 +27,6 @@
     src: systemd.service
     dest: /etc/systemd/system/frontend.service
 
-- name: Install Filebeat Monitoring
-  include_role:
-    name: common
-    tasks_from: filebeat
-  vars:
-    IS_STRUCTURED: false
-    LOG_FILES:
-      - { file: "/var/log/frontend.log", type: "frontend" }
-
 - name: Start frontend Service
   systemd:
     name: "frontend"
@@ -70,7 +61,14 @@
 
 
 
- 
+# - name: Install Filebeat Monitoring
+#   include_role:
+#     name: common
+#     tasks_from: filebeat
+#   vars:
+#     IS_STRUCTURED: false
+#     LOG_FILES:
+#       - { file: "/var/log/frontend.log", type: "frontend" } 
 
 # - name: Install Node Exporter Prometheus Monitoring
 #   include_role:
