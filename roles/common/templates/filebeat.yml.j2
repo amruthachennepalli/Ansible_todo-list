@@ -22,12 +22,12 @@ setup.template.settings:
 # ---------------------------- Elasticsearch Output ----------------------------
 
 output.elasticsearch:
-  hosts: ["localhost:9200"]
+  hosts: ["172.31.72.105:9200"]
 
 {% else%}
 
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["172.31.72.105:5044"]
 
 {% endif %}
