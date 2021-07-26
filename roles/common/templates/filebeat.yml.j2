@@ -5,7 +5,7 @@ filebeat.inputs:
 - type: log
 enabled: false
 paths:
-    - /var/log/*.log
+    - {{ log_filename }}
 
 # ============================== Filebeat modules ==============================
 
@@ -23,6 +23,7 @@ setup.template.settings:
 
 output.elasticsearch:
   hosts: ["172.31.72.105:9200"]
+  index: "{{COMPONENT}}-%{+yyyy.MM.dd}"
 
 {% else%}
 
@@ -31,3 +32,10 @@ output.logstash:
   hosts: ["172.31.72.105:5044"]
 
 {% endif %}
+
+{% if IS_STRUCTURED %}
+setup.template.name: "{{COMPONENT}}"
+setup.template.pattern: "{{COMPONENT}}-*"
+setup.template.enabled: false
+{% endif %}
+
