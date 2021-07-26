@@ -34,7 +34,7 @@
   vars:
     IS_STRUCTURED: false
     LOG_FILES:
-      - { file: "/var/log/{{COMPONENT}}.log", type: "{{COMPONENT}}" }
+      - { file: "/var/log/frontend.log", type: "frontend" }
 
 - name: Start frontend Service
   systemd:
