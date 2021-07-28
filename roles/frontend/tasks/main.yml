@@ -32,7 +32,23 @@
     name: "frontend"
     daemon_reload: yes
     state: started
-    enabled: yes    
+    enabled: yes  
+
+- name: Install Node Exporter Prometheus Monitoring
+  include_role:
+    name: common
+    tasks_from: node_exporter 
+
+- name: Install Filebeat Monitoring
+  include_role:
+    name: common
+    tasks_from: filebeat
+  vars:
+    IS_STRUCTURED: false
+    LOG_FILES:
+      - { file: "/var/log/"{{COMPONENT}}".log", type: "{{COMPONENT}}" }     
+
+  
 
 
 
@@ -61,24 +77,12 @@
 
 
 
-# - name: Install Filebeat Monitoring
-#   include_role:
-#     name: common
-#     tasks_from: filebeat
-#   vars:
-#     IS_STRUCTURED: false
-#     LOG_FILES:
-#       - { file: "/var/log/frontend.log", type: "frontend" } 
 
-# - name: Install Node Exporter Prometheus Monitoring
-#   include_role:
-#     name: common
-#     tasks_from: node_exporter      
 
-# - name: Copy index.js file
-#   template:
-#     src: index.js
-#     dest: /var/www/html/todoapp/frontend/config/index.js
+     
+
+
+
 
 # - name: Install Filebeat Monitoring
 #   include_role:
