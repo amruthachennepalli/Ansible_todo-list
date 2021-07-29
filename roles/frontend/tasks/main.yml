@@ -16,6 +16,16 @@
     username: admin
     password: admin123
 
+- name: Clean the old artifacts
+  file:
+    path: /home/todoapp/{{COMPONENT}}
+    state: absent
+
+- name: Create the artifact path
+  file:
+    path: /home/todoapp/{{COMPONENT}}
+    state: directory
+
 - name: Unzip {{COMPONENT}} Component
   unarchive:
     src: /tmp/{{COMPONENT}}.zip
@@ -46,7 +56,7 @@
 #   vars:
 #     IS_STRUCTURED: false
 #     LOG_FILES:
-#       - { file: "/var/log/"{{COMPONENT}}".log", type: "{{COMPONENT}}" }     
+#       - { file: "/var/log/{{COMPONENT}}.log", type: "{{COMPONENT}}" }     
 
   
 
