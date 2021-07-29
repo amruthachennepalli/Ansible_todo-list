@@ -2,34 +2,34 @@
   apt:
     name: npm
     update_cache: yes
-    state: present         
+    state: present   
 
-- name: Create todoapp and frontend dir
-  file:
-    path: /var/www/html/todoapp/frontend
-    state: directory      
-    
-- name: Download frontend from nexus
+- name: Add user todoapp
+  user:
+    name: todoapp
+    shell: /bin/bash
+
+- name: Download {{COMPONENT}} from nexus
   get_url:
-    url: http://172.31.68.193:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
-    dest: /tmp/frontend.zip
+    url: http://172.31.68.193:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+    dest: /tmp/{{COMPONENT}}.zip
     username: admin
     password: admin123
 
-- name: Unzip frontend Component
+- name: Unzip {{COMPONENT}} Component
   unarchive:
-    src: /tmp/frontend.zip
-    dest: /var/www/html/todoapp/frontend
+    src: /tmp/{{COMPONENT}}.zip
+    dest: /home/todoapp/{{COMPONENT}}
     remote_src: yes  
 
 - name: Copy systemd file
   template:
     src: systemd.service
-    dest: /etc/systemd/system/frontend.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
 
-- name: Start frontend Service
+- name: Start {{COMPONENT}} Service
   systemd:
-    name: "frontend"
+    name: "{{COMPONENT}}"
     daemon_reload: yes
     state: started
     enabled: yes  
