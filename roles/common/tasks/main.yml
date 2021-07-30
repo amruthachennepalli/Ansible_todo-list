@@ -2,12 +2,12 @@
   hostname:
     name: "{{COMPONENT}}"
 
-# - name: Update Rsyslog config
-#   copy:
-#     src: rsyslog.conf
-#     dest: /etc/rsyslog.d/todo.conf
+- name: Update Rsyslog config
+  copy:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/todo.conf
 
-# - name: Restart rsyslog
-#   systemd:
-#     name: rsyslog
-#     state: restarted    
+- name: Restart rsyslog
+  systemd:
+    name: rsyslog
+    state: restarted    
