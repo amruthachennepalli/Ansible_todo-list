@@ -38,17 +38,17 @@
 #     dest: /home/todoapp/{{COMPONENT}}
 #     remote_src: yes  
 
-- name: Copy systemd file
-  template:
-    src: systemd.service
-    dest: /etc/systemd/system/{{COMPONENT}}.service
+# - name: Copy systemd file
+#   template:
+#     src: systemd.service
+#     dest: /etc/systemd/system/{{COMPONENT}}.service
 
-- name: Start {{COMPONENT}} Service
-  systemd:
-    name: "{{COMPONENT}}"
-    daemon_reload: yes
-    state: started
-    enabled: yes 
+# - name: Start {{COMPONENT}} Service
+#   systemd:
+#     name: "{{COMPONENT}}"
+#     daemon_reload: yes
+#     state: started
+#     enabled: yes 
 
 - name: Delete the default content
   file:
@@ -109,14 +109,15 @@
   vars:
     IS_STRUCTURED: false
     LOG_FILES:
-      - { file: "/var/log/{{COMPONENT}}.log", type: "{{COMPONENT}}" }     
+      - { file: "/var/log/nginx/access.log", type: "nginx_access" }
+      - { file: "/var/log/nginx/error.log", type: "nginx_error" }     
 
-- name: Restart {{COMPONENT}} Service
-  systemd:
-    name: "{{COMPONENT}}"
-    daemon_reload: yes
-    state: restarted
-    enabled: yes  
+# - name: Restart {{COMPONENT}} Service
+#   systemd:
+#     name: "{{COMPONENT}}"
+#     daemon_reload: yes
+#     state: restarted
+#     enabled: yes  
   
 
 
