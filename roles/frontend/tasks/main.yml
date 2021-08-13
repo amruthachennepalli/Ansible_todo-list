@@ -38,17 +38,17 @@
 #     dest: /home/todoapp/{{COMPONENT}}
 #     remote_src: yes  
 
-# - name: Copy systemd file
-#   template:
-#     src: systemd.service
-#     dest: /etc/systemd/system/{{COMPONENT}}.service
+- name: Copy systemd file
+  template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
 
-# - name: Start {{COMPONENT}} Service
-#   systemd:
-#     name: "{{COMPONENT}}"
-#     daemon_reload: yes
-#     state: started
-#     enabled: yes 
+- name: Start {{COMPONENT}} Service
+  systemd:
+    name: "{{COMPONENT}}"
+    daemon_reload: yes
+    state: started
+    enabled: yes 
 
 - name: Delete the default content
   file:
