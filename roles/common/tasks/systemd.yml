@@ -3,7 +3,7 @@
         src: systemd.service
         dest: /etc/systemd/system/{{COMPONENT}}.service             
 
-    - name: Start {{COMPONENT}} Service
+    - name: Restart {{COMPONENT}} Service
       systemd:
         name: "{{COMPONENT}}"
         daemon_reload: yes
