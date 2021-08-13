@@ -11,11 +11,11 @@ filebeat.inputs:
   fields:
     logType: {{ log_filename.type }}  
 
-# {% if IS_JAVA %}
-#   multiline.pattern: ^[0-9][0-9][0-9][0-9]
-#   multiline.negate: true
-#   multiline.match: after
-# {% endif %}  
+{% if IS_JAVA %}
+  multiline.pattern: ^[0-9][0-9][0-9][0-9]
+  multiline.negate: true
+  multiline.match: after
+{% endif %}  
 
 {% endfor %}
 
