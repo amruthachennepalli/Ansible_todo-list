@@ -2,8 +2,8 @@
 Description = frontend Service
 [Service]
 User=root
-Environment=AUTH_API_ADDRESS=http://login.zsdevops.online:8080
-Environment=TODOS_API_ADDRESS=http://todo.zsdevops.online:8080
+Environment=AUTH_API_ADDRESS=http://login-{{ENV}}.zsdevops.online:8080
+Environment=TODOS_API_ADDRESS=http://todo-{{ENV}}.zsdevops.online:8080
 WorkingDirectory=/home/todoapp/frontend
 ExecStart=/usr/bin/npm start 
 Restart=on-failure
