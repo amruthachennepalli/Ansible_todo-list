@@ -3,7 +3,7 @@ Description=users Service
 
 [Service]
 User=todoapp
-Environment=REDIS_HOST=redis.zsdevops.online
+Environment=REDIS_HOST=redis-{{ENV}}.zsdevops.online
 ExecStart=/bin/java -jar /home/todoapp/users/users.jar
 SyslogIdentifier=users
 
