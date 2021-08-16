@@ -21,5 +21,6 @@
     tasks_from: filebeat
   vars:
     IS_STRUCTURED: true
+    IS_GOLANG: true
     LOG_FILES:
       - { file: "/var/log/{{COMPONENT}}.log", type: "{{COMPONENT}}" }   
