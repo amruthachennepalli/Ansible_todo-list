@@ -5,6 +5,10 @@
 
   roles: 
 
+    - role: frontend
+      tags: frontend
+      when: COMPONENT == "frontend"  
+
     - role: redis
       tags: redis
       when: COMPONENT == "redis"
@@ -20,8 +24,4 @@
     - role: login
       tags: login
       when: COMPONENT == "login"        
-
-    - role: frontend
-      tags: frontend
-      when: COMPONENT == "frontend"
             
